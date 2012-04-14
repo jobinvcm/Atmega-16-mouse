@@ -2,6 +2,7 @@
 #include <util/delay.h>
 #include "lcd.c"
 #include "adc.h"
+#define F_CPU 20000000UL	
 void main()
 {
 DDRC=0xff;
