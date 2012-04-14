@@ -11,7 +11,8 @@ avrhidmouse.o: ../avrhidmouse.c \
   c:/winavr-20080430/lib/gcc/../../avr/include/avr/lock.h \
   c:/winavr-20080430/lib/gcc/../../avr/include/util/delay.h \
   c:/winavr-20080430/lib/gcc/../../avr/include/util/delay_basic.h \
-  ../lcd.c ../lcd.h ../myutils.h
+  ../lcd.c ../lcd.h ../myutils.h ../adc.h \
+  c:/winavr-20080430/lib/gcc/../../avr/include/avr/interrupt.h
 
 c:/winavr-20080430/lib/gcc/../../avr/include/avr/io.h:
 
@@ -42,3 +43,7 @@ c:/winavr-20080430/lib/gcc/../../avr/include/util/delay_basic.h:
 ../lcd.h:
 
 ../myutils.h:
+
+../adc.h:
+
+c:/winavr-20080430/lib/gcc/../../avr/include/avr/interrupt.h:
