@@ -28,6 +28,7 @@ LCDWriteString("y=");
 LCDWriteInt(y,3);
 LCDWriteString("z=");
 LCDWriteInt(z,3);
+LCDGotoXY(0,1);
 
 LCDWriteString("x=");
 LCDWriteInt(xl,3);
