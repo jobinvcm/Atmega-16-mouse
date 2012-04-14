@@ -1,14 +1,4 @@
-/*
-Description:
-    A library to easily access standard lcd modules with AVR series of
-    MCUs from Atmel. Use with AVR studio and WinAVR.
 
-Author:
-    Avinash Gupta
-    avinash@eXtremeElectronics.co.in
-Web:
-    www.eXtremeElectronics.co.in
-*/
 
 #include <avr/io.h>
 #include <inttypes.h>
