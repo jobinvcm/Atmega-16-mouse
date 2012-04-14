@@ -633,8 +633,8 @@ void main()
  2ae:	cf 93       	push	r28
  2b0:	df 93       	push	r29
 DDRC=0xff;
- 2b2:	8f ef       	ldi	r24, 0xFF	; 255
- 2b4:	84 bb       	out	0x14, r24	; 20
+ 2b2:	1f ef       	ldi	r17, 0xFF	; 255
+ 2b4:	14 bb       	out	0x14, r17	; 20
 InitLCD(LS_ULINE);
  2b6:	82 e0       	ldi	r24, 0x02	; 2
  2b8:	0e 94 9b 00 	call	0x136	; 0x136 <InitLCD>
@@ -651,8 +651,8 @@ unsigned int adcdata,adcdata1;
  2c4:	87 e8       	ldi	r24, 0x87	; 135
  2c6:	86 b9       	out	0x06, r24	; 6
 adc_init();
-PORTC=0x00;
- 2c8:	15 ba       	out	0x15, r1	; 21
+PORTC=0xff;
+ 2c8:	15 bb       	out	0x15, r17	; 21
  2ca:	44 24       	eor	r4, r4
  2cc:	55 24       	eor	r5, r5
  2ce:	66 24       	eor	r6, r6

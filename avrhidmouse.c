@@ -8,7 +8,7 @@ DDRC=0xff;
 InitLCD(LS_ULINE);
 LCDWriteString("Hello World");
 adc_init();
-PORTC=0x00;
+PORTC=0xff;
 int x,y,z,xl,yl,zl;
 x=0;
 y=0;
