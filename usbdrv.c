@@ -1,12 +1,4 @@
-/* Name: usbdrv.c
- * Project: V-USB, virtual USB port for Atmel's(r) AVR(r) microcontrollers
- * Author: Christian Starkjohann
- * Creation Date: 2004-12-29
- * Tabsize: 4
- * Copyright: (c) 2005 by OBJECTIVE DEVELOPMENT Software GmbH
- * License: GNU GPL v2 (see License.txt), GNU GPL v3 or proprietary (CommercialLicense.txt)
- * This Revision: $Id$
- */
+
 
 #include "usbportability.h"
 #include "usbdrv.h"
@@ -534,7 +526,7 @@ uchar       len;
     usbTxBuf[0] ^= USBPID_DATA0 ^ USBPID_DATA1; /* DATA toggling */
     len = usbDeviceRead(usbTxBuf + 1, wantLen);
     if(len <= 8){           /* valid data packet */
-        usbCrc16(&usbTxBuf[1], len);
+        usbCrc16Append(&usbTxBuf[1], len);
         len += 4;           /* length including sync byte */
         if(len < 12)        /* a partial package identifies end of message */
             usbMsgLen = USB_NO_MSG;
