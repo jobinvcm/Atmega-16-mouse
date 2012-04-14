@@ -1,40 +1,44 @@
-avrhidmouse.o: ../avrhidmouse.c C:/WinAVR/avr/include/avr/io.h \
-  C:/WinAVR/avr/include/avr/sfr_defs.h C:/WinAVR/avr/include/inttypes.h \
-  C:/WinAVR/avr/include/stdint.h C:/WinAVR/avr/include/avr/iom16.h \
-  C:/WinAVR/avr/include/avr/portpins.h \
-  C:/WinAVR/avr/include/avr/version.h \
-  C:/WinAVR/avr/include/avr/interrupt.h C:/WinAVR/avr/include/avr/wdt.h \
-  ../usbdrv.h ../usbconfig.h ../usbportability.h \
-  C:/WinAVR/avr/include/avr/pgmspace.h \
-  C:\WinAVR\bin/../lib/gcc/avr/3.4.6/include/stddef.h \
-  C:/WinAVR/avr/include/util/delay.h
+avrhidmouse.o: ../avrhidmouse.c \
+  c:/winavr-20080430/lib/gcc/../../avr/include/avr/io.h \
+  c:/winavr-20080430/lib/gcc/../../avr/include/avr/sfr_defs.h \
+  c:/winavr-20080430/lib/gcc/../../avr/include/inttypes.h \
+  c:/winavr-20080430/lib/gcc/../../avr/include/stdint.h \
+  c:/winavr-20080430/lib/gcc/../../avr/include/avr/iom16.h \
+  c:/winavr-20080430/lib/gcc/../../avr/include/avr/portpins.h \
+  c:/winavr-20080430/lib/gcc/../../avr/include/avr/common.h \
+  c:/winavr-20080430/lib/gcc/../../avr/include/avr/version.h \
+  c:/winavr-20080430/lib/gcc/../../avr/include/avr/fuse.h \
+  c:/winavr-20080430/lib/gcc/../../avr/include/avr/lock.h \
+  c:/winavr-20080430/lib/gcc/../../avr/include/util/delay.h \
+  c:/winavr-20080430/lib/gcc/../../avr/include/util/delay_basic.h \
+  ../lcd.c ../lcd.h ../myutils.h
 
-C:/WinAVR/avr/include/avr/io.h:
+c:/winavr-20080430/lib/gcc/../../avr/include/avr/io.h:
 
-C:/WinAVR/avr/include/avr/sfr_defs.h:
+c:/winavr-20080430/lib/gcc/../../avr/include/avr/sfr_defs.h:
 
-C:/WinAVR/avr/include/inttypes.h:
+c:/winavr-20080430/lib/gcc/../../avr/include/inttypes.h:
 
-C:/WinAVR/avr/include/stdint.h:
+c:/winavr-20080430/lib/gcc/../../avr/include/stdint.h:
 
-C:/WinAVR/avr/include/avr/iom16.h:
+c:/winavr-20080430/lib/gcc/../../avr/include/avr/iom16.h:
 
-C:/WinAVR/avr/include/avr/portpins.h:
+c:/winavr-20080430/lib/gcc/../../avr/include/avr/portpins.h:
 
-C:/WinAVR/avr/include/avr/version.h:
+c:/winavr-20080430/lib/gcc/../../avr/include/avr/common.h:
 
-C:/WinAVR/avr/include/avr/interrupt.h:
+c:/winavr-20080430/lib/gcc/../../avr/include/avr/version.h:
 
-C:/WinAVR/avr/include/avr/wdt.h:
+c:/winavr-20080430/lib/gcc/../../avr/include/avr/fuse.h:
 
-../usbdrv.h:
+c:/winavr-20080430/lib/gcc/../../avr/include/avr/lock.h:
 
-../usbconfig.h:
+c:/winavr-20080430/lib/gcc/../../avr/include/util/delay.h:
 
-../usbportability.h:
+c:/winavr-20080430/lib/gcc/../../avr/include/util/delay_basic.h:
 
-C:/WinAVR/avr/include/avr/pgmspace.h:
+../lcd.c:
 
-C:\WinAVR\bin/../lib/gcc/avr/3.4.6/include/stddef.h:
+../lcd.h:
 
-C:/WinAVR/avr/include/util/delay.h:
+../myutils.h:
