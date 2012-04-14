@@ -94,7 +94,7 @@ Disassembly of section .text:
   8a:	0c 94 60 02 	jmp	0x4c0	; 0x4c0 <_exit>
 
 0000008e <__bad_interrupt>:
-  8e:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+  8e:	0c 94 00 00 	jmp	0	; 0x0 <__heap_end>
 
 00000092 <LCDBusyLoop>:
 
@@ -651,8 +651,8 @@ unsigned int adcdata,adcdata1;
  2c4:	87 e8       	ldi	r24, 0x87	; 135
  2c6:	86 b9       	out	0x06, r24	; 6
 adc_init();
-PORTC=0b00000010;
- 2c8:	82 e0       	ldi	r24, 0x02	; 2
+PORTC=0b00000001;
+ 2c8:	81 e0       	ldi	r24, 0x01	; 1
  2ca:	85 bb       	out	0x15, r24	; 21
  2cc:	44 24       	eor	r4, r4
  2ce:	55 24       	eor	r5, r5
