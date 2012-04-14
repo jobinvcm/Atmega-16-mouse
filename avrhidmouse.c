@@ -21,7 +21,7 @@ LCDWriteInt(getdata(0),4);
 LCDWriteString("y=");
 LCDWriteInt(getdata(1),4);
 
-
+LCDGotoXY(0,1);
 LCDWriteString("z=");
 LCDWriteInt(getdata(2),4);
 }
