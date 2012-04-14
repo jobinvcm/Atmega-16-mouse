@@ -1,6 +1,3 @@
-This is the Readme file to Objective Development's firmware-only USB driver
-for Atmel AVR microcontrollers. For more information please visit
-http://www.obdev.at/vusb/
 
 This directory contains the USB firmware only. Copy it as-is to your own
 project and add all .c and .S files to your project (these files are marked
@@ -161,12 +158,4 @@ http://www.obdev.at/goto.php?t=vusb-wiki&p=hosted-projects.
 
 (3) If you improve the driver firmware itself, please give us a free license
 to your modifications for our commercial license offerings.
-
-
-COMMERCIAL LICENSES FOR V-USB
-=============================
-If you don't want to publish your source code under the terms of the GPL,
-you can simply pay money for V-USB. As an additional benefit you get
-USB PIDs for free, reserved exclusively to you. See the file
-"CommercialLicense.txt" for details.
 
