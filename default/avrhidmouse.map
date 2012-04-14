@@ -1,9 +1,13 @@
 Archive member included because of file (symbol)
 
+C:/WinAVR/lib/gcc/avr/3.4.6/avr5\libgcc.a(_divmodhi4.o)
+                              lcd.o (__divmodhi4)
 C:/WinAVR/lib/gcc/avr/3.4.6/avr5\libgcc.a(_copy_data.o)
                               avrhidmouse.o (__do_copy_data)
 C:/WinAVR/lib/gcc/avr/3.4.6/avr5\libgcc.a(_clear_bss.o)
                               avrhidmouse.o (__do_clear_bss)
+C:/WinAVR/lib/gcc/avr/3.4.6/avr5\libgcc.a(_udivmodhi4.o)
+                              C:/WinAVR/lib/gcc/avr/3.4.6/avr5\libgcc.a(_divmodhi4.o) (__udivmodhi4)
 
 Allocating common symbols
 Common symbol       size              file
@@ -33,6 +37,7 @@ LOAD C:/WinAVR/bin/../lib/gcc/avr/3.4.6/../../../../avr/lib/avr5/crtm16.o
 LOAD avrhidmouse.o
 LOAD oddebug.o
 LOAD usbdrv.o
+LOAD lcd.o
 LOAD C:/WinAVR/lib/gcc/avr/3.4.6/avr5\libgcc.a
 LOAD C:/WinAVR/bin/../lib/gcc/avr/3.4.6/../../../../avr/lib/avr5\libc.a
 LOAD C:/WinAVR/lib/gcc/avr/3.4.6/avr5\libgcc.a
@@ -127,7 +132,7 @@ LOAD C:/WinAVR/lib/gcc/avr/3.4.6/avr5\libgcc.a
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000      0x2c8
+.text           0x00000000      0x528
  *(.vectors)
  .vectors       0x00000000       0x54 C:/WinAVR/bin/../lib/gcc/avr/3.4.6/../../../../avr/lib/avr5/crtm16.o
                 0x00000000                __vectors
@@ -192,9 +197,21 @@ LOAD C:/WinAVR/lib/gcc/avr/3.4.6/avr5\libgcc.a
  .text          0x0000011e      0x1aa usbdrv.o
                 0x0000011e                usbPoll
                 0x000002ba                usbInit
-                0x000002c8                . = ALIGN (0x2)
+ .text          0x000002c8      0x212 lcd.o
+                0x000003e0                LCDWriteString
+                0x00000338                LCDByte
+                0x000002c8                LCDBusyLoop
+                0x0000038a                InitLCD
+                0x00000400                LCDWriteInt
+                0x000004c8                LCDGotoXY
+                0x000004da                . = ALIGN (0x2)
  *(.text.*)
-                0x000002c8                . = ALIGN (0x2)
+ .text.libgcc   0x000004da       0x26 C:/WinAVR/lib/gcc/avr/3.4.6/avr5\libgcc.a(_divmodhi4.o)
+                0x000004da                __divmodhi4
+                0x000004da                _div
+ .text.libgcc   0x00000500       0x28 C:/WinAVR/lib/gcc/avr/3.4.6/avr5\libgcc.a(_udivmodhi4.o)
+                0x00000500                __udivmodhi4
+                0x00000528                . = ALIGN (0x2)
  *(.fini9)
  *(.fini8)
  *(.fini7)
@@ -205,9 +222,9 @@ LOAD C:/WinAVR/lib/gcc/avr/3.4.6/avr5\libgcc.a
  *(.fini2)
  *(.fini1)
  *(.fini0)
-                0x000002c8                _etext = .
+                0x00000528                _etext = .
 
-.data           0x00800060        0x2 load address 0x000002c8
+.data           0x00800060        0x2 load address 0x00000528
                 0x00800060                PROVIDE (__data_start, .)
  *(.data)
  .data          0x00800060        0x2 usbdrv.o
@@ -234,8 +251,8 @@ LOAD C:/WinAVR/lib/gcc/avr/3.4.6/avr5\libgcc.a
                 0x00800076                usbConfiguration
                 0x00800077                usbRxBuf
                 0x0080008d                PROVIDE (__bss_end, .)
-                0x000002c8                __data_load_start = LOADADDR (.data)
-                0x000002ca                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x00000528                __data_load_start = LOADADDR (.data)
+                0x0000052a                __data_load_end = (__data_load_start + SIZEOF (.data))
 
 .noinit         0x0080008d        0x0
                 0x0080008d                PROVIDE (__noinit_start, .)
@@ -283,51 +300,60 @@ LOAD C:/WinAVR/lib/gcc/avr/3.4.6/avr5\libgcc.a
 .debug_sfnames
  *(.debug_sfnames)
 
-.debug_aranges  0x00000000       0x28
+.debug_aranges  0x00000000       0x3c
  *(.debug_aranges)
  .debug_aranges
                 0x00000000       0x14 avrhidmouse.o
  .debug_aranges
                 0x00000014       0x14 usbdrv.o
+ .debug_aranges
+                0x00000028       0x14 lcd.o
 
 .debug_pubnames
-                0x00000000      0x19b
+                0x00000000      0x206
  *(.debug_pubnames)
  .debug_pubnames
                 0x00000000       0x30 avrhidmouse.o
  .debug_pubnames
                 0x00000030      0x16b usbdrv.o
+ .debug_pubnames
+                0x0000019b       0x6b lcd.o
 
-.debug_info     0x00000000      0x8be
+.debug_info     0x00000000      0xead
  *(.debug_info)
  .debug_info    0x00000000      0x192 avrhidmouse.o
  .debug_info    0x00000192       0xa0 oddebug.o
  .debug_info    0x00000232      0x68c usbdrv.o
+ .debug_info    0x000008be      0x5ef lcd.o
  *(.gnu.linkonce.wi.*)
 
-.debug_abbrev   0x00000000      0x2ff
+.debug_abbrev   0x00000000      0x441
  *(.debug_abbrev)
  .debug_abbrev  0x00000000       0xf3 avrhidmouse.o
  .debug_abbrev  0x000000f3       0x2a oddebug.o
  .debug_abbrev  0x0000011d      0x1e2 usbdrv.o
+ .debug_abbrev  0x000002ff      0x142 lcd.o
 
-.debug_line     0x00000000      0x4f4
+.debug_line     0x00000000      0x7fe
  *(.debug_line)
  .debug_line    0x00000000      0x14a avrhidmouse.o
  .debug_line    0x0000014a       0xb5 oddebug.o
  .debug_line    0x000001ff      0x2f5 usbdrv.o
+ .debug_line    0x000004f4      0x30a lcd.o
 
 .debug_frame
  *(.debug_frame)
 
-.debug_str      0x00000000      0x36b
+.debug_str      0x00000000      0x3f8
  *(.debug_str)
- .debug_str     0x00000000       0xe3 avrhidmouse.o
+ .debug_str     0x00000000       0xde avrhidmouse.o
                                 0x13b (size before relaxing)
- .debug_str     0x000000e3        0xd oddebug.o
+ .debug_str     0x000000de        0xd oddebug.o
                                  0xe2 (size before relaxing)
- .debug_str     0x000000f0      0x27b usbdrv.o
+ .debug_str     0x000000eb      0x27b usbdrv.o
                                 0x35e (size before relaxing)
+ .debug_str     0x00000366       0x92 lcd.o
+                                0x178 (size before relaxing)
 
 .debug_loc
  *(.debug_loc)
