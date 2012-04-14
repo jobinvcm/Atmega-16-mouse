@@ -94,7 +94,7 @@ Disassembly of section .text:
   8a:	0c 94 5f 02 	jmp	0x4be	; 0x4be <_exit>
 
 0000008e <__bad_interrupt>:
-  8e:	0c 94 00 00 	jmp	0	; 0x0 <__heap_end>
+  8e:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
 
 00000092 <LCDBusyLoop>:
 
@@ -745,8 +745,8 @@ LCDWriteInt(zl,3);
  362:	70 e0       	ldi	r23, 0x00	; 0
  364:	c7 01       	movw	r24, r14
  366:	0e 94 d4 00 	call	0x1a8	; 0x1a8 <LCDWriteInt>
- 36a:	20 ed       	ldi	r18, 0xD0	; 208
- 36c:	37 e0       	ldi	r19, 0x07	; 7
+ 36a:	2a e0       	ldi	r18, 0x0A	; 10
+ 36c:	30 e0       	ldi	r19, 0x00	; 0
  36e:	17 b9       	out	0x07, r17	; 7
     ADMUX|=chno;					//select the ADC channel
  370:	87 b1       	in	r24, 0x07	; 7
@@ -760,7 +760,7 @@ LCDWriteInt(zl,3);
 	return ADCH;
  37c:	85 b1       	in	r24, 0x05	; 5
 
-k=2000;
+k=10;
 while(k)
 {if (getdata(0)>x)
  37e:	90 e0       	ldi	r25, 0x00	; 0
@@ -1019,7 +1019,7 @@ LCDWriteInt(yl,3);
 LCDWriteString("z=");
 LCDWriteInt(zl,3);
 
-k=2000;
+k=10;
 while(k)
  46a:	09 f0       	breq	.+2      	; 0x46e <__stack+0xf>
  46c:	80 cf       	rjmp	.-256    	; 0x36e <main+0xda>

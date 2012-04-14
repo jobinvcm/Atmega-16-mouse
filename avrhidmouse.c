@@ -37,7 +37,7 @@ LCDWriteInt(yl,3);
 LCDWriteString("z=");
 LCDWriteInt(zl,3);
 
-k=2000;
+k=10;
 while(k)
 {if (getdata(0)>x)
 	  {
