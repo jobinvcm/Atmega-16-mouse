@@ -9,21 +9,61 @@ InitLCD(LS_ULINE);
 LCDWriteString("Hello World");
 adc_init();
 PORTC=0x00;
+int x,y,z,xl,yl,zl;
+x=0;
+y=0;
+z=0;
+xl=255;
+yl=255;
+zl=255;
+int k;
 while(1)
 {
 
-_delay_ms(1000);
 LCDClear();
 
 LCDWriteString("x=");
-LCDWriteInt(getdata(0),4);
-
+LCDWriteInt(x,3);
 LCDWriteString("y=");
-LCDWriteInt(getdata(1),4);
-
-LCDGotoXY(0,1);
+LCDWriteInt(y,3);
 LCDWriteString("z=");
-LCDWriteInt(getdata(2),4);
+LCDWriteInt(z,3);
+
+LCDWriteString("x=");
+LCDWriteInt(xl,3);
+LCDWriteString("y=");
+LCDWriteInt(yl,3);
+LCDWriteString("z=");
+LCDWriteInt(zl,3);
+
+k=2000;
+while(k)
+{if (getdata(0)>x)
+	  {
+  		x=getdata(0);
+	  }
+ if (getdata(1)>y)
+ 	{
+		y=getdata(1);
+	}
+ if (getdata(2)>z)
+ 	{
+		z=getdata(2);
+	}
+ if (getdata(0)<xl)
+ 	{
+		xl=getdata(0);
+	}
+ if (getdata(1)<yl)
+ 	{
+		yl=getdata(1);
+	}
+ if (getdata(2)<zl)
+  	{
+		zl=getdata(2);
+	}
+	k--;
+}
 }
 }
 
