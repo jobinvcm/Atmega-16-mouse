@@ -3,29 +3,29 @@ avrhidmouse.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .text         00000392  00000000  00000000  00000074  2**1
+  0 .text         0000038e  00000000  00000000  00000074  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  1 .data         00000016  00800060  00000392  00000406  2**0
+  1 .data         00000016  00800060  0000038e  00000402  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  2 .bss          00000004  00800076  000003a8  0000041c  2**0
+  2 .bss          00000004  00800076  000003a4  00000418  2**0
                   ALLOC
-  3 .debug_aranges 00000020  00000000  00000000  0000041c  2**0
+  3 .debug_aranges 00000020  00000000  00000000  00000418  2**0
                   CONTENTS, READONLY, DEBUGGING
-  4 .debug_pubnames 000000a6  00000000  00000000  0000043c  2**0
+  4 .debug_pubnames 000000a6  00000000  00000000  00000438  2**0
                   CONTENTS, READONLY, DEBUGGING
-  5 .debug_info   0000080c  00000000  00000000  000004e2  2**0
+  5 .debug_info   00000800  00000000  00000000  000004de  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_abbrev 000001f7  00000000  00000000  00000cee  2**0
+  6 .debug_abbrev 000001f7  00000000  00000000  00000cde  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_line   0000056a  00000000  00000000  00000ee5  2**0
+  7 .debug_line   0000058e  00000000  00000000  00000ed5  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_frame  000000a0  00000000  00000000  00001450  2**2
+  8 .debug_frame  000000a0  00000000  00000000  00001464  2**2
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_str    00000173  00000000  00000000  000014f0  2**0
+  9 .debug_str    00000173  00000000  00000000  00001504  2**0
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_loc    000003ae  00000000  00000000  00001663  2**0
+ 10 .debug_loc    0000039e  00000000  00000000  00001677  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_ranges 000000a8  00000000  00000000  00001a11  2**0
+ 11 .debug_ranges 000000f0  00000000  00000000  00001a15  2**0
                   CONTENTS, READONLY, DEBUGGING
 Disassembly of section .text:
 
@@ -64,7 +64,7 @@ Disassembly of section .text:
   60:	10 e0       	ldi	r17, 0x00	; 0
   62:	a0 e6       	ldi	r26, 0x60	; 96
   64:	b0 e0       	ldi	r27, 0x00	; 0
-  66:	e2 e9       	ldi	r30, 0x92	; 146
+  66:	ee e8       	ldi	r30, 0x8E	; 142
   68:	f3 e0       	ldi	r31, 0x03	; 3
   6a:	02 c0       	rjmp	.+4      	; 0x70 <.do_copy_data_start>
 
@@ -91,10 +91,10 @@ Disassembly of section .text:
   82:	b1 07       	cpc	r27, r17
   84:	e1 f7       	brne	.-8      	; 0x7e <.do_clear_bss_loop>
   86:	0e 94 4a 01 	call	0x294	; 0x294 <main>
-  8a:	0c 94 c7 01 	jmp	0x38e	; 0x38e <_exit>
+  8a:	0c 94 c5 01 	jmp	0x38a	; 0x38a <_exit>
 
 0000008e <__bad_interrupt>:
-  8e:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+  8e:	0c 94 00 00 	jmp	0	; 0x0 <__heap_end>
 
 00000092 <LCDBusyLoop>:
 
@@ -454,13 +454,13 @@ void LCDWriteInt(int val,unsigned int field_length)
  1d6:	c9 01       	movw	r24, r18
  1d8:	6a e0       	ldi	r22, 0x0A	; 10
  1da:	70 e0       	ldi	r23, 0x00	; 0
- 1dc:	0e 94 a0 01 	call	0x340	; 0x340 <__divmodhi4>
+ 1dc:	0e 94 9e 01 	call	0x33c	; 0x33c <__divmodhi4>
  1e0:	80 83       	st	Z, r24
 	val=val/10;
  1e2:	c9 01       	movw	r24, r18
  1e4:	6a e0       	ldi	r22, 0x0A	; 10
  1e6:	70 e0       	ldi	r23, 0x00	; 0
- 1e8:	0e 94 a0 01 	call	0x340	; 0x340 <__divmodhi4>
+ 1e8:	0e 94 9e 01 	call	0x33c	; 0x33c <__divmodhi4>
  1ec:	9b 01       	movw	r18, r22
  1ee:	31 97       	sbiw	r30, 0x01	; 1
 
@@ -643,42 +643,42 @@ unsigned int adcdata,adcdata1;
 adc_init();
 PORTC=0x00;
  2b4:	15 ba       	out	0x15, r1	; 21
- 2b6:	28 e8       	ldi	r18, 0x88	; 136
- 2b8:	33 e1       	ldi	r19, 0x13	; 19
+ 2b6:	89 e1       	ldi	r24, 0x19	; 25
+ 2b8:	e8 2e       	mov	r14, r24
+ 2ba:	f1 2c       	mov	r15, r1
   		
  }
  unsigned char getdata(unsigned char chno)	
   {
     ADMUX=0X60;						//right align the ADC result
- 2ba:	10 e6       	ldi	r17, 0x60	; 96
- 2bc:	c4 ec       	ldi	r28, 0xC4	; 196
- 2be:	d9 e0       	ldi	r29, 0x09	; 9
+ 2bc:	10 e6       	ldi	r17, 0x60	; 96
+ 2be:	c4 ec       	ldi	r28, 0xC4	; 196
+ 2c0:	d9 e0       	ldi	r29, 0x09	; 9
+while(1)
+{
+LCDClear();
+ 2c2:	60 e0       	ldi	r22, 0x00	; 0
+ 2c4:	81 e0       	ldi	r24, 0x01	; 1
+ 2c6:	0e 94 73 00 	call	0xe6	; 0xe6 <LCDByte>
+ 2ca:	88 e8       	ldi	r24, 0x88	; 136
+ 2cc:	93 e1       	ldi	r25, 0x13	; 19
+ 2ce:	f7 01       	movw	r30, r14
+ 2d0:	31 97       	sbiw	r30, 0x01	; 1
+ 2d2:	f1 f7       	brne	.-4      	; 0x2d0 <main+0x3c>
 		__ticks = (uint16_t) (__ms * 10.0);
 		while(__ticks)
 		{
 			// wait 1/10 ms
 			_delay_loop_2(((F_CPU) / 4e3) / 10);
 			__ticks --;
- 2c0:	89 e1       	ldi	r24, 0x19	; 25
- 2c2:	e8 2e       	mov	r14, r24
- 2c4:	f1 2c       	mov	r15, r1
- 2c6:	05 c0       	rjmp	.+10     	; 0x2d2 <main+0x3e>
- 2c8:	c7 01       	movw	r24, r14
- 2ca:	01 97       	sbiw	r24, 0x01	; 1
- 2cc:	f1 f7       	brne	.-4      	; 0x2ca <main+0x36>
- 2ce:	21 50       	subi	r18, 0x01	; 1
- 2d0:	30 40       	sbci	r19, 0x00	; 0
+ 2d4:	01 97       	sbiw	r24, 0x01	; 1
 		__ticks = 1;
 	else if (__tmp > 65535)
 	{
 		//	__ticks = requested delay in 1/10 ms
 		__ticks = (uint16_t) (__ms * 10.0);
 		while(__ticks)
- 2d2:	21 15       	cp	r18, r1
- 2d4:	31 05       	cpc	r19, r1
- 2d6:	c1 f7       	brne	.-16     	; 0x2c8 <main+0x34>
-while(1)
-{
+ 2d6:	d9 f7       	brne	.-10     	; 0x2ce <main+0x3a>
 
 _delay_ms(500);
 LCDWriteString("x=");
@@ -757,65 +757,63 @@ LCDWriteInt(getdata(2),4);
  332:	70 e0       	ldi	r23, 0x00	; 0
  334:	90 e0       	ldi	r25, 0x00	; 0
  336:	0e 94 d4 00 	call	0x1a8	; 0x1a8 <LCDWriteInt>
- 33a:	28 e8       	ldi	r18, 0x88	; 136
- 33c:	33 e1       	ldi	r19, 0x13	; 19
- 33e:	c4 cf       	rjmp	.-120    	; 0x2c8 <main+0x34>
+ 33a:	c3 cf       	rjmp	.-122    	; 0x2c2 <main+0x2e>
 
-00000340 <__divmodhi4>:
- 340:	97 fb       	bst	r25, 7
- 342:	09 2e       	mov	r0, r25
- 344:	07 26       	eor	r0, r23
- 346:	0a d0       	rcall	.+20     	; 0x35c <__divmodhi4_neg1>
- 348:	77 fd       	sbrc	r23, 7
- 34a:	04 d0       	rcall	.+8      	; 0x354 <__divmodhi4_neg2>
- 34c:	0c d0       	rcall	.+24     	; 0x366 <__udivmodhi4>
- 34e:	06 d0       	rcall	.+12     	; 0x35c <__divmodhi4_neg1>
- 350:	00 20       	and	r0, r0
- 352:	1a f4       	brpl	.+6      	; 0x35a <__divmodhi4_exit>
+0000033c <__divmodhi4>:
+ 33c:	97 fb       	bst	r25, 7
+ 33e:	09 2e       	mov	r0, r25
+ 340:	07 26       	eor	r0, r23
+ 342:	0a d0       	rcall	.+20     	; 0x358 <__divmodhi4_neg1>
+ 344:	77 fd       	sbrc	r23, 7
+ 346:	04 d0       	rcall	.+8      	; 0x350 <__divmodhi4_neg2>
+ 348:	0c d0       	rcall	.+24     	; 0x362 <__udivmodhi4>
+ 34a:	06 d0       	rcall	.+12     	; 0x358 <__divmodhi4_neg1>
+ 34c:	00 20       	and	r0, r0
+ 34e:	1a f4       	brpl	.+6      	; 0x356 <__divmodhi4_exit>
 
-00000354 <__divmodhi4_neg2>:
- 354:	70 95       	com	r23
- 356:	61 95       	neg	r22
- 358:	7f 4f       	sbci	r23, 0xFF	; 255
+00000350 <__divmodhi4_neg2>:
+ 350:	70 95       	com	r23
+ 352:	61 95       	neg	r22
+ 354:	7f 4f       	sbci	r23, 0xFF	; 255
 
-0000035a <__divmodhi4_exit>:
- 35a:	08 95       	ret
+00000356 <__divmodhi4_exit>:
+ 356:	08 95       	ret
 
-0000035c <__divmodhi4_neg1>:
- 35c:	f6 f7       	brtc	.-4      	; 0x35a <__divmodhi4_exit>
- 35e:	90 95       	com	r25
- 360:	81 95       	neg	r24
- 362:	9f 4f       	sbci	r25, 0xFF	; 255
- 364:	08 95       	ret
+00000358 <__divmodhi4_neg1>:
+ 358:	f6 f7       	brtc	.-4      	; 0x356 <__divmodhi4_exit>
+ 35a:	90 95       	com	r25
+ 35c:	81 95       	neg	r24
+ 35e:	9f 4f       	sbci	r25, 0xFF	; 255
+ 360:	08 95       	ret
 
-00000366 <__udivmodhi4>:
- 366:	aa 1b       	sub	r26, r26
- 368:	bb 1b       	sub	r27, r27
- 36a:	51 e1       	ldi	r21, 0x11	; 17
- 36c:	07 c0       	rjmp	.+14     	; 0x37c <__udivmodhi4_ep>
+00000362 <__udivmodhi4>:
+ 362:	aa 1b       	sub	r26, r26
+ 364:	bb 1b       	sub	r27, r27
+ 366:	51 e1       	ldi	r21, 0x11	; 17
+ 368:	07 c0       	rjmp	.+14     	; 0x378 <__udivmodhi4_ep>
 
-0000036e <__udivmodhi4_loop>:
- 36e:	aa 1f       	adc	r26, r26
- 370:	bb 1f       	adc	r27, r27
- 372:	a6 17       	cp	r26, r22
- 374:	b7 07       	cpc	r27, r23
- 376:	10 f0       	brcs	.+4      	; 0x37c <__udivmodhi4_ep>
- 378:	a6 1b       	sub	r26, r22
- 37a:	b7 0b       	sbc	r27, r23
+0000036a <__udivmodhi4_loop>:
+ 36a:	aa 1f       	adc	r26, r26
+ 36c:	bb 1f       	adc	r27, r27
+ 36e:	a6 17       	cp	r26, r22
+ 370:	b7 07       	cpc	r27, r23
+ 372:	10 f0       	brcs	.+4      	; 0x378 <__udivmodhi4_ep>
+ 374:	a6 1b       	sub	r26, r22
+ 376:	b7 0b       	sbc	r27, r23
 
-0000037c <__udivmodhi4_ep>:
- 37c:	88 1f       	adc	r24, r24
- 37e:	99 1f       	adc	r25, r25
- 380:	5a 95       	dec	r21
- 382:	a9 f7       	brne	.-22     	; 0x36e <__udivmodhi4_loop>
- 384:	80 95       	com	r24
- 386:	90 95       	com	r25
- 388:	bc 01       	movw	r22, r24
- 38a:	cd 01       	movw	r24, r26
- 38c:	08 95       	ret
+00000378 <__udivmodhi4_ep>:
+ 378:	88 1f       	adc	r24, r24
+ 37a:	99 1f       	adc	r25, r25
+ 37c:	5a 95       	dec	r21
+ 37e:	a9 f7       	brne	.-22     	; 0x36a <__udivmodhi4_loop>
+ 380:	80 95       	com	r24
+ 382:	90 95       	com	r25
+ 384:	bc 01       	movw	r22, r24
+ 386:	cd 01       	movw	r24, r26
+ 388:	08 95       	ret
 
-0000038e <_exit>:
- 38e:	f8 94       	cli
+0000038a <_exit>:
+ 38a:	f8 94       	cli
 
-00000390 <__stop_program>:
- 390:	ff cf       	rjmp	.-2      	; 0x390 <__stop_program>
+0000038c <__stop_program>:
+ 38c:	ff cf       	rjmp	.-2      	; 0x38c <__stop_program>
