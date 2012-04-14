@@ -13,7 +13,7 @@ while(1)
 {
 LCDClear();
 
-_delay_ms(500);
+_delay_ms(1000);
 LCDWriteString("x=");
 LCDWriteInt(getdata(0),4);
 

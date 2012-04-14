@@ -660,8 +660,8 @@ LCDClear();
  2c2:	60 e0       	ldi	r22, 0x00	; 0
  2c4:	81 e0       	ldi	r24, 0x01	; 1
  2c6:	0e 94 73 00 	call	0xe6	; 0xe6 <LCDByte>
- 2ca:	88 e8       	ldi	r24, 0x88	; 136
- 2cc:	93 e1       	ldi	r25, 0x13	; 19
+ 2ca:	80 e1       	ldi	r24, 0x10	; 16
+ 2cc:	97 e2       	ldi	r25, 0x27	; 39
  2ce:	f7 01       	movw	r30, r14
  2d0:	31 97       	sbiw	r30, 0x01	; 1
  2d2:	f1 f7       	brne	.-4      	; 0x2d0 <main+0x3c>
@@ -680,7 +680,7 @@ LCDClear();
 		while(__ticks)
  2d6:	d9 f7       	brne	.-10     	; 0x2ce <main+0x3a>
 
-_delay_ms(500);
+_delay_ms(1000);
 LCDWriteString("x=");
  2d8:	8c e6       	ldi	r24, 0x6C	; 108
  2da:	90 e0       	ldi	r25, 0x00	; 0
