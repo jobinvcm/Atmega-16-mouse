@@ -11,9 +11,10 @@ adc_init();
 PORTC=0x00;
 while(1)
 {
-LCDClear();
 
 _delay_ms(1000);
+LCDClear();
+
 LCDWriteString("x=");
 LCDWriteInt(getdata(0),4);
 

@@ -3,29 +3,29 @@ avrhidmouse.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .text         0000038e  00000000  00000000  00000074  2**1
+  0 .text         0000039a  00000000  00000000  00000074  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  1 .data         00000016  00800060  0000038e  00000402  2**0
+  1 .data         00000016  00800060  0000039a  0000040e  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  2 .bss          00000004  00800076  000003a4  00000418  2**0
+  2 .bss          00000004  00800076  000003b0  00000424  2**0
                   ALLOC
-  3 .debug_aranges 00000020  00000000  00000000  00000418  2**0
+  3 .debug_aranges 00000020  00000000  00000000  00000424  2**0
                   CONTENTS, READONLY, DEBUGGING
-  4 .debug_pubnames 000000a6  00000000  00000000  00000438  2**0
+  4 .debug_pubnames 000000a6  00000000  00000000  00000444  2**0
                   CONTENTS, READONLY, DEBUGGING
-  5 .debug_info   00000800  00000000  00000000  000004de  2**0
+  5 .debug_info   0000080c  00000000  00000000  000004ea  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_abbrev 000001f7  00000000  00000000  00000cde  2**0
+  6 .debug_abbrev 000001f7  00000000  00000000  00000cf6  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_line   0000058e  00000000  00000000  00000ed5  2**0
+  7 .debug_line   00000570  00000000  00000000  00000eed  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_frame  000000a0  00000000  00000000  00001464  2**2
+  8 .debug_frame  000000a0  00000000  00000000  00001460  2**2
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_str    00000173  00000000  00000000  00001504  2**0
+  9 .debug_str    00000173  00000000  00000000  00001500  2**0
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_loc    0000039e  00000000  00000000  00001677  2**0
+ 10 .debug_loc    000003ae  00000000  00000000  00001673  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_ranges 000000f0  00000000  00000000  00001a15  2**0
+ 11 .debug_ranges 000000a8  00000000  00000000  00001a21  2**0
                   CONTENTS, READONLY, DEBUGGING
 Disassembly of section .text:
 
@@ -64,7 +64,7 @@ Disassembly of section .text:
   60:	10 e0       	ldi	r17, 0x00	; 0
   62:	a0 e6       	ldi	r26, 0x60	; 96
   64:	b0 e0       	ldi	r27, 0x00	; 0
-  66:	ee e8       	ldi	r30, 0x8E	; 142
+  66:	ea e9       	ldi	r30, 0x9A	; 154
   68:	f3 e0       	ldi	r31, 0x03	; 3
   6a:	02 c0       	rjmp	.+4      	; 0x70 <.do_copy_data_start>
 
@@ -91,7 +91,7 @@ Disassembly of section .text:
   82:	b1 07       	cpc	r27, r17
   84:	e1 f7       	brne	.-8      	; 0x7e <.do_clear_bss_loop>
   86:	0e 94 4a 01 	call	0x294	; 0x294 <main>
-  8a:	0c 94 c5 01 	jmp	0x38a	; 0x38a <_exit>
+  8a:	0c 94 cb 01 	jmp	0x396	; 0x396 <_exit>
 
 0000008e <__bad_interrupt>:
   8e:	0c 94 00 00 	jmp	0	; 0x0 <__heap_end>
@@ -454,13 +454,13 @@ void LCDWriteInt(int val,unsigned int field_length)
  1d6:	c9 01       	movw	r24, r18
  1d8:	6a e0       	ldi	r22, 0x0A	; 10
  1da:	70 e0       	ldi	r23, 0x00	; 0
- 1dc:	0e 94 9e 01 	call	0x33c	; 0x33c <__divmodhi4>
+ 1dc:	0e 94 a4 01 	call	0x348	; 0x348 <__divmodhi4>
  1e0:	80 83       	st	Z, r24
 	val=val/10;
  1e2:	c9 01       	movw	r24, r18
  1e4:	6a e0       	ldi	r22, 0x0A	; 10
  1e6:	70 e0       	ldi	r23, 0x00	; 0
- 1e8:	0e 94 9e 01 	call	0x33c	; 0x33c <__divmodhi4>
+ 1e8:	0e 94 a4 01 	call	0x348	; 0x348 <__divmodhi4>
  1ec:	9b 01       	movw	r18, r22
  1ee:	31 97       	sbiw	r30, 0x01	; 1
 
@@ -643,177 +643,184 @@ unsigned int adcdata,adcdata1;
 adc_init();
 PORTC=0x00;
  2b4:	15 ba       	out	0x15, r1	; 21
- 2b6:	89 e1       	ldi	r24, 0x19	; 25
- 2b8:	e8 2e       	mov	r14, r24
- 2ba:	f1 2c       	mov	r15, r1
+ 2b6:	20 e1       	ldi	r18, 0x10	; 16
+ 2b8:	37 e2       	ldi	r19, 0x27	; 39
   		
  }
  unsigned char getdata(unsigned char chno)	
   {
     ADMUX=0X60;						//right align the ADC result
- 2bc:	10 e6       	ldi	r17, 0x60	; 96
- 2be:	c4 ec       	ldi	r28, 0xC4	; 196
- 2c0:	d9 e0       	ldi	r29, 0x09	; 9
-while(1)
-{
-LCDClear();
- 2c2:	60 e0       	ldi	r22, 0x00	; 0
- 2c4:	81 e0       	ldi	r24, 0x01	; 1
- 2c6:	0e 94 73 00 	call	0xe6	; 0xe6 <LCDByte>
- 2ca:	80 e1       	ldi	r24, 0x10	; 16
- 2cc:	97 e2       	ldi	r25, 0x27	; 39
- 2ce:	f7 01       	movw	r30, r14
- 2d0:	31 97       	sbiw	r30, 0x01	; 1
- 2d2:	f1 f7       	brne	.-4      	; 0x2d0 <main+0x3c>
+ 2ba:	10 e6       	ldi	r17, 0x60	; 96
+ 2bc:	c4 ec       	ldi	r28, 0xC4	; 196
+ 2be:	d9 e0       	ldi	r29, 0x09	; 9
 		__ticks = (uint16_t) (__ms * 10.0);
 		while(__ticks)
 		{
 			// wait 1/10 ms
 			_delay_loop_2(((F_CPU) / 4e3) / 10);
 			__ticks --;
- 2d4:	01 97       	sbiw	r24, 0x01	; 1
+ 2c0:	89 e1       	ldi	r24, 0x19	; 25
+ 2c2:	e8 2e       	mov	r14, r24
+ 2c4:	f1 2c       	mov	r15, r1
+ 2c6:	05 c0       	rjmp	.+10     	; 0x2d2 <main+0x3e>
+ 2c8:	c7 01       	movw	r24, r14
+ 2ca:	01 97       	sbiw	r24, 0x01	; 1
+ 2cc:	f1 f7       	brne	.-4      	; 0x2ca <main+0x36>
+ 2ce:	21 50       	subi	r18, 0x01	; 1
+ 2d0:	30 40       	sbci	r19, 0x00	; 0
 		__ticks = 1;
 	else if (__tmp > 65535)
 	{
 		//	__ticks = requested delay in 1/10 ms
 		__ticks = (uint16_t) (__ms * 10.0);
 		while(__ticks)
- 2d6:	d9 f7       	brne	.-10     	; 0x2ce <main+0x3a>
+ 2d2:	21 15       	cp	r18, r1
+ 2d4:	31 05       	cpc	r19, r1
+ 2d6:	c1 f7       	brne	.-16     	; 0x2c8 <main+0x34>
+while(1)
+{
 
 _delay_ms(1000);
+LCDClear();
+ 2d8:	60 e0       	ldi	r22, 0x00	; 0
+ 2da:	81 e0       	ldi	r24, 0x01	; 1
+ 2dc:	0e 94 73 00 	call	0xe6	; 0xe6 <LCDByte>
+
 LCDWriteString("x=");
- 2d8:	8c e6       	ldi	r24, 0x6C	; 108
- 2da:	90 e0       	ldi	r25, 0x00	; 0
- 2dc:	0e 94 c6 00 	call	0x18c	; 0x18c <LCDWriteString>
- 2e0:	17 b9       	out	0x07, r17	; 7
+ 2e0:	8c e6       	ldi	r24, 0x6C	; 108
+ 2e2:	90 e0       	ldi	r25, 0x00	; 0
+ 2e4:	0e 94 c6 00 	call	0x18c	; 0x18c <LCDWriteString>
+ 2e8:	17 b9       	out	0x07, r17	; 7
     ADMUX|=chno;					//select the ADC channel
- 2e2:	87 b1       	in	r24, 0x07	; 7
- 2e4:	87 b9       	out	0x07, r24	; 7
+ 2ea:	87 b1       	in	r24, 0x07	; 7
+ 2ec:	87 b9       	out	0x07, r24	; 7
     ADCSRA|=0X40;					//start ADC convertion
- 2e6:	36 9a       	sbi	0x06, 6	; 6
- 2e8:	ce 01       	movw	r24, r28
- 2ea:	01 97       	sbiw	r24, 0x01	; 1
- 2ec:	f1 f7       	brne	.-4      	; 0x2ea <main+0x56>
+ 2ee:	36 9a       	sbi	0x06, 6	; 6
+ 2f0:	ce 01       	movw	r24, r28
+ 2f2:	01 97       	sbiw	r24, 0x01	; 1
+ 2f4:	f1 f7       	brne	.-4      	; 0x2f2 <main+0x5e>
     _delay_ms(10);					//give some time delay to complit the aDC convertion
 	return ADCH;
- 2ee:	85 b1       	in	r24, 0x05	; 5
+ 2f6:	85 b1       	in	r24, 0x05	; 5
 LCDWriteInt(getdata(0),4);
- 2f0:	64 e0       	ldi	r22, 0x04	; 4
- 2f2:	70 e0       	ldi	r23, 0x00	; 0
- 2f4:	90 e0       	ldi	r25, 0x00	; 0
- 2f6:	0e 94 d4 00 	call	0x1a8	; 0x1a8 <LCDWriteInt>
+ 2f8:	64 e0       	ldi	r22, 0x04	; 4
+ 2fa:	70 e0       	ldi	r23, 0x00	; 0
+ 2fc:	90 e0       	ldi	r25, 0x00	; 0
+ 2fe:	0e 94 d4 00 	call	0x1a8	; 0x1a8 <LCDWriteInt>
 
 LCDWriteString("y=");
- 2fa:	8f e6       	ldi	r24, 0x6F	; 111
- 2fc:	90 e0       	ldi	r25, 0x00	; 0
- 2fe:	0e 94 c6 00 	call	0x18c	; 0x18c <LCDWriteString>
+ 302:	8f e6       	ldi	r24, 0x6F	; 111
+ 304:	90 e0       	ldi	r25, 0x00	; 0
+ 306:	0e 94 c6 00 	call	0x18c	; 0x18c <LCDWriteString>
   ADCSRA=0X87;						//ADC enable, ADC interrupt enable, set prescaller to 64
   		
  }
  unsigned char getdata(unsigned char chno)	
   {
     ADMUX=0X60;						//right align the ADC result
- 302:	17 b9       	out	0x07, r17	; 7
+ 30a:	17 b9       	out	0x07, r17	; 7
     ADMUX|=chno;					//select the ADC channel
- 304:	38 9a       	sbi	0x07, 0	; 7
+ 30c:	38 9a       	sbi	0x07, 0	; 7
     ADCSRA|=0X40;					//start ADC convertion
- 306:	36 9a       	sbi	0x06, 6	; 6
- 308:	ce 01       	movw	r24, r28
- 30a:	01 97       	sbiw	r24, 0x01	; 1
- 30c:	f1 f7       	brne	.-4      	; 0x30a <main+0x76>
+ 30e:	36 9a       	sbi	0x06, 6	; 6
+ 310:	ce 01       	movw	r24, r28
+ 312:	01 97       	sbiw	r24, 0x01	; 1
+ 314:	f1 f7       	brne	.-4      	; 0x312 <main+0x7e>
     _delay_ms(10);					//give some time delay to complit the aDC convertion
 	return ADCH;
- 30e:	85 b1       	in	r24, 0x05	; 5
+ 316:	85 b1       	in	r24, 0x05	; 5
 LCDWriteInt(getdata(1),4);
- 310:	64 e0       	ldi	r22, 0x04	; 4
- 312:	70 e0       	ldi	r23, 0x00	; 0
- 314:	90 e0       	ldi	r25, 0x00	; 0
- 316:	0e 94 d4 00 	call	0x1a8	; 0x1a8 <LCDWriteInt>
+ 318:	64 e0       	ldi	r22, 0x04	; 4
+ 31a:	70 e0       	ldi	r23, 0x00	; 0
+ 31c:	90 e0       	ldi	r25, 0x00	; 0
+ 31e:	0e 94 d4 00 	call	0x1a8	; 0x1a8 <LCDWriteInt>
 
 
 LCDWriteString("z=");
- 31a:	82 e7       	ldi	r24, 0x72	; 114
- 31c:	90 e0       	ldi	r25, 0x00	; 0
- 31e:	0e 94 c6 00 	call	0x18c	; 0x18c <LCDWriteString>
+ 322:	82 e7       	ldi	r24, 0x72	; 114
+ 324:	90 e0       	ldi	r25, 0x00	; 0
+ 326:	0e 94 c6 00 	call	0x18c	; 0x18c <LCDWriteString>
   ADCSRA=0X87;						//ADC enable, ADC interrupt enable, set prescaller to 64
   		
  }
  unsigned char getdata(unsigned char chno)	
   {
     ADMUX=0X60;						//right align the ADC result
- 322:	17 b9       	out	0x07, r17	; 7
+ 32a:	17 b9       	out	0x07, r17	; 7
     ADMUX|=chno;					//select the ADC channel
- 324:	39 9a       	sbi	0x07, 1	; 7
+ 32c:	39 9a       	sbi	0x07, 1	; 7
     ADCSRA|=0X40;					//start ADC convertion
- 326:	36 9a       	sbi	0x06, 6	; 6
- 328:	ce 01       	movw	r24, r28
- 32a:	01 97       	sbiw	r24, 0x01	; 1
- 32c:	f1 f7       	brne	.-4      	; 0x32a <main+0x96>
+ 32e:	36 9a       	sbi	0x06, 6	; 6
+ 330:	ce 01       	movw	r24, r28
+ 332:	01 97       	sbiw	r24, 0x01	; 1
+ 334:	f1 f7       	brne	.-4      	; 0x332 <main+0x9e>
     _delay_ms(10);					//give some time delay to complit the aDC convertion
 	return ADCH;
- 32e:	85 b1       	in	r24, 0x05	; 5
+ 336:	85 b1       	in	r24, 0x05	; 5
 LCDWriteInt(getdata(2),4);
- 330:	64 e0       	ldi	r22, 0x04	; 4
- 332:	70 e0       	ldi	r23, 0x00	; 0
- 334:	90 e0       	ldi	r25, 0x00	; 0
- 336:	0e 94 d4 00 	call	0x1a8	; 0x1a8 <LCDWriteInt>
- 33a:	c3 cf       	rjmp	.-122    	; 0x2c2 <main+0x2e>
+ 338:	64 e0       	ldi	r22, 0x04	; 4
+ 33a:	70 e0       	ldi	r23, 0x00	; 0
+ 33c:	90 e0       	ldi	r25, 0x00	; 0
+ 33e:	0e 94 d4 00 	call	0x1a8	; 0x1a8 <LCDWriteInt>
+ 342:	20 e1       	ldi	r18, 0x10	; 16
+ 344:	37 e2       	ldi	r19, 0x27	; 39
+ 346:	c0 cf       	rjmp	.-128    	; 0x2c8 <main+0x34>
 
-0000033c <__divmodhi4>:
- 33c:	97 fb       	bst	r25, 7
- 33e:	09 2e       	mov	r0, r25
- 340:	07 26       	eor	r0, r23
- 342:	0a d0       	rcall	.+20     	; 0x358 <__divmodhi4_neg1>
- 344:	77 fd       	sbrc	r23, 7
- 346:	04 d0       	rcall	.+8      	; 0x350 <__divmodhi4_neg2>
- 348:	0c d0       	rcall	.+24     	; 0x362 <__udivmodhi4>
- 34a:	06 d0       	rcall	.+12     	; 0x358 <__divmodhi4_neg1>
- 34c:	00 20       	and	r0, r0
- 34e:	1a f4       	brpl	.+6      	; 0x356 <__divmodhi4_exit>
+00000348 <__divmodhi4>:
+ 348:	97 fb       	bst	r25, 7
+ 34a:	09 2e       	mov	r0, r25
+ 34c:	07 26       	eor	r0, r23
+ 34e:	0a d0       	rcall	.+20     	; 0x364 <__divmodhi4_neg1>
+ 350:	77 fd       	sbrc	r23, 7
+ 352:	04 d0       	rcall	.+8      	; 0x35c <__divmodhi4_neg2>
+ 354:	0c d0       	rcall	.+24     	; 0x36e <__udivmodhi4>
+ 356:	06 d0       	rcall	.+12     	; 0x364 <__divmodhi4_neg1>
+ 358:	00 20       	and	r0, r0
+ 35a:	1a f4       	brpl	.+6      	; 0x362 <__divmodhi4_exit>
 
-00000350 <__divmodhi4_neg2>:
- 350:	70 95       	com	r23
- 352:	61 95       	neg	r22
- 354:	7f 4f       	sbci	r23, 0xFF	; 255
+0000035c <__divmodhi4_neg2>:
+ 35c:	70 95       	com	r23
+ 35e:	61 95       	neg	r22
+ 360:	7f 4f       	sbci	r23, 0xFF	; 255
 
-00000356 <__divmodhi4_exit>:
- 356:	08 95       	ret
+00000362 <__divmodhi4_exit>:
+ 362:	08 95       	ret
 
-00000358 <__divmodhi4_neg1>:
- 358:	f6 f7       	brtc	.-4      	; 0x356 <__divmodhi4_exit>
- 35a:	90 95       	com	r25
- 35c:	81 95       	neg	r24
- 35e:	9f 4f       	sbci	r25, 0xFF	; 255
- 360:	08 95       	ret
+00000364 <__divmodhi4_neg1>:
+ 364:	f6 f7       	brtc	.-4      	; 0x362 <__divmodhi4_exit>
+ 366:	90 95       	com	r25
+ 368:	81 95       	neg	r24
+ 36a:	9f 4f       	sbci	r25, 0xFF	; 255
+ 36c:	08 95       	ret
 
-00000362 <__udivmodhi4>:
- 362:	aa 1b       	sub	r26, r26
- 364:	bb 1b       	sub	r27, r27
- 366:	51 e1       	ldi	r21, 0x11	; 17
- 368:	07 c0       	rjmp	.+14     	; 0x378 <__udivmodhi4_ep>
+0000036e <__udivmodhi4>:
+ 36e:	aa 1b       	sub	r26, r26
+ 370:	bb 1b       	sub	r27, r27
+ 372:	51 e1       	ldi	r21, 0x11	; 17
+ 374:	07 c0       	rjmp	.+14     	; 0x384 <__udivmodhi4_ep>
 
-0000036a <__udivmodhi4_loop>:
- 36a:	aa 1f       	adc	r26, r26
- 36c:	bb 1f       	adc	r27, r27
- 36e:	a6 17       	cp	r26, r22
- 370:	b7 07       	cpc	r27, r23
- 372:	10 f0       	brcs	.+4      	; 0x378 <__udivmodhi4_ep>
- 374:	a6 1b       	sub	r26, r22
- 376:	b7 0b       	sbc	r27, r23
+00000376 <__udivmodhi4_loop>:
+ 376:	aa 1f       	adc	r26, r26
+ 378:	bb 1f       	adc	r27, r27
+ 37a:	a6 17       	cp	r26, r22
+ 37c:	b7 07       	cpc	r27, r23
+ 37e:	10 f0       	brcs	.+4      	; 0x384 <__udivmodhi4_ep>
+ 380:	a6 1b       	sub	r26, r22
+ 382:	b7 0b       	sbc	r27, r23
 
-00000378 <__udivmodhi4_ep>:
- 378:	88 1f       	adc	r24, r24
- 37a:	99 1f       	adc	r25, r25
- 37c:	5a 95       	dec	r21
- 37e:	a9 f7       	brne	.-22     	; 0x36a <__udivmodhi4_loop>
- 380:	80 95       	com	r24
- 382:	90 95       	com	r25
- 384:	bc 01       	movw	r22, r24
- 386:	cd 01       	movw	r24, r26
- 388:	08 95       	ret
+00000384 <__udivmodhi4_ep>:
+ 384:	88 1f       	adc	r24, r24
+ 386:	99 1f       	adc	r25, r25
+ 388:	5a 95       	dec	r21
+ 38a:	a9 f7       	brne	.-22     	; 0x376 <__udivmodhi4_loop>
+ 38c:	80 95       	com	r24
+ 38e:	90 95       	com	r25
+ 390:	bc 01       	movw	r22, r24
+ 392:	cd 01       	movw	r24, r26
+ 394:	08 95       	ret
 
-0000038a <_exit>:
- 38a:	f8 94       	cli
+00000396 <_exit>:
+ 396:	f8 94       	cli
 
-0000038c <__stop_program>:
- 38c:	ff cf       	rjmp	.-2      	; 0x38c <__stop_program>
+00000398 <__stop_program>:
+ 398:	ff cf       	rjmp	.-2      	; 0x398 <__stop_program>
