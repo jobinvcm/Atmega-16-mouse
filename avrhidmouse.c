@@ -12,6 +12,15 @@ while(1)
 _delay_ms(500);
 LCDClear();
 LCDWriteInt(getdata(0),4);
+
+_delay_ms(500);
+LCDClear();
+LCDWriteInt(getdata(1),4);
+
+
+_delay_ms(500);
+LCDClear();
+LCDWriteInt(getdata(2),4);
 }
 }
 
