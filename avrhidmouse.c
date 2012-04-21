@@ -9,6 +9,7 @@
 #include <util/delay.h>
 
 USB_PUBLIC uchar usbFunctionSetup(uchar data[8]) {
+
 return 0;
 }
 
