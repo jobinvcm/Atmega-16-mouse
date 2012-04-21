@@ -7,13 +7,24 @@
 #define USB_LED_ON  1
 #define F_CPU 12000000L
 #include <util/delay.h>
+#include "lcd.c"
 
 USB_PUBLIC uchar usbFunctionSetup(uchar data[8]) {
+usbRequest_t *rq = (void *)data; // cast data to correct type
 
-return 0;
+    switch(rq->bRequest) { // custom command is in the bRequest field
+    case USB_LED_ON:
+        LCDWriteString("Suceesful"); // turn LED on
+        return 0;
+    case USB_LED_OFF:
+        LCDWriteString("not sucessful"); // turn LED off
+        return 0;
+    }
 }
 
 int main() {
+InitLCD(LS_ULINE);
+
         uchar i;
 
     wdt_enable(WDTO_1S); // enable 1s watchdog timer

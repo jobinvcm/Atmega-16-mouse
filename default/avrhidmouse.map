@@ -1,7 +1,7 @@
 Archive member included because of file (symbol)
 
 c:/winavr-20080430/bin/../lib/gcc/avr/4.3.0/avr5\libgcc.a(_divmodhi4.o)
-                              lcd.o (__divmodhi4)
+                              avrhidmouse.o (__divmodhi4)
 c:/winavr-20080430/bin/../lib/gcc/avr/4.3.0/avr5\libgcc.a(_exit.o)
                               c:/winavr-20080430/bin/../lib/gcc/avr/4.3.0/../../../../avr/lib/avr5/crtm16.o (exit)
 c:/winavr-20080430/bin/../lib/gcc/avr/4.3.0/avr5\libgcc.a(_copy_data.o)
@@ -41,7 +41,6 @@ Linker script and memory map
 LOAD c:/winavr-20080430/bin/../lib/gcc/avr/4.3.0/../../../../avr/lib/avr5/crtm16.o
 LOAD avrhidmouse.o
 LOAD usbdrvasm.o
-LOAD lcd.o
 LOAD oddebug.o
 LOAD usbdrv.o
 LOAD c:/winavr-20080430/bin/../lib/gcc/avr/4.3.0/avr5\libgcc.a
@@ -138,7 +137,7 @@ LOAD c:/winavr-20080430/bin/../lib/gcc/avr/4.3.0/avr5\libgcc.a
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000      0x7ba
+.text           0x00000000      0x7da
  *(.vectors)
  .vectors       0x00000000       0x54 c:/winavr-20080430/bin/../lib/gcc/avr/4.3.0/../../../../avr/lib/avr5/crtm16.o
                 0x00000000                __vectors
@@ -220,44 +219,43 @@ LOAD c:/winavr-20080430/bin/../lib/gcc/avr/4.3.0/avr5\libgcc.a
                 0x000000da                __vector_16
                 0x000000da                __vector_18
                 0x000000da                __vector_20
- .text          0x000000de       0x3c avrhidmouse.o
-                0x000000de                usbFunctionSetup
-                0x000000e2                main
- .text          0x0000011a      0x28c usbdrvasm.o
-                0x0000014c                __vector_1
-                0x0000011a                usbCrc16
-                0x00000144                usbCrc16Append
- .text          0x000003a6      0x1f0 lcd.o
-                0x000004ac                LCDWriteString
-                0x000003fc                LCDByte
-                0x000003a6                LCDBusyLoop
-                0x0000044c                InitLCD
-                0x000004c8                LCDWriteInt
-                0x00000584                LCDGotoXY
- .text          0x00000596        0x0 oddebug.o
- .text          0x00000596      0x1d2 usbdrv.o
-                0x000005a4                usbPoll
-                0x00000596                usbInit
- .text          0x00000768        0x0 c:/winavr-20080430/bin/../lib/gcc/avr/4.3.0/avr5\libgcc.a(_divmodhi4.o)
- .text          0x00000768        0x0 c:/winavr-20080430/bin/../lib/gcc/avr/4.3.0/avr5\libgcc.a(_exit.o)
- .text          0x00000768        0x0 c:/winavr-20080430/bin/../lib/gcc/avr/4.3.0/avr5\libgcc.a(_copy_data.o)
- .text          0x00000768        0x0 c:/winavr-20080430/bin/../lib/gcc/avr/4.3.0/avr5\libgcc.a(_clear_bss.o)
- .text          0x00000768        0x0 c:/winavr-20080430/bin/../lib/gcc/avr/4.3.0/avr5\libgcc.a(_udivmodhi4.o)
-                0x00000768                . = ALIGN (0x2)
+ .text          0x000000de      0x24c avrhidmouse.o
+                0x000001e4                LCDWriteString
+                0x000002ce                usbFunctionSetup
+                0x00000134                LCDByte
+                0x000000de                LCDBusyLoop
+                0x00000184                InitLCD
+                0x000002ec                main
+                0x00000200                LCDWriteInt
+                0x000002bc                LCDGotoXY
+ .text          0x0000032a      0x28c usbdrvasm.o
+                0x0000035c                __vector_1
+                0x0000032a                usbCrc16
+                0x00000354                usbCrc16Append
+ .text          0x000005b6        0x0 oddebug.o
+ .text          0x000005b6      0x1d2 usbdrv.o
+                0x000005c4                usbPoll
+                0x000005b6                usbInit
+ .text          0x00000788        0x0 c:/winavr-20080430/bin/../lib/gcc/avr/4.3.0/avr5\libgcc.a(_divmodhi4.o)
+ .text          0x00000788        0x0 c:/winavr-20080430/bin/../lib/gcc/avr/4.3.0/avr5\libgcc.a(_exit.o)
+ .text          0x00000788        0x0 c:/winavr-20080430/bin/../lib/gcc/avr/4.3.0/avr5\libgcc.a(_copy_data.o)
+ .text          0x00000788        0x0 c:/winavr-20080430/bin/../lib/gcc/avr/4.3.0/avr5\libgcc.a(_clear_bss.o)
+ .text          0x00000788        0x0 c:/winavr-20080430/bin/../lib/gcc/avr/4.3.0/avr5\libgcc.a(_udivmodhi4.o)
+                0x00000788                . = ALIGN (0x2)
  *(.text.*)
- .text.libgcc   0x00000768       0x26 c:/winavr-20080430/bin/../lib/gcc/avr/4.3.0/avr5\libgcc.a(_divmodhi4.o)
-                0x00000768                __divmodhi4
-                0x00000768                _div
- .text.libgcc   0x0000078e        0x0 c:/winavr-20080430/bin/../lib/gcc/avr/4.3.0/avr5\libgcc.a(_exit.o)
- .text.libgcc   0x0000078e        0x0 c:/winavr-20080430/bin/../lib/gcc/avr/4.3.0/avr5\libgcc.a(_copy_data.o)
- .text.libgcc   0x0000078e        0x0 c:/winavr-20080430/bin/../lib/gcc/avr/4.3.0/avr5\libgcc.a(_clear_bss.o)
- .text.libgcc   0x0000078e       0x28 c:/winavr-20080430/bin/../lib/gcc/avr/4.3.0/avr5\libgcc.a(_udivmodhi4.o)
-                0x0000078e                __udivmodhi4
-                0x000007b6                . = ALIGN (0x2)
+ .text.libgcc   0x00000788       0x26 c:/winavr-20080430/bin/../lib/gcc/avr/4.3.0/avr5\libgcc.a(_divmodhi4.o)
+                0x00000788                __divmodhi4
+                0x00000788                _div
+ .text.libgcc   0x000007ae        0x0 c:/winavr-20080430/bin/../lib/gcc/avr/4.3.0/avr5\libgcc.a(_exit.o)
+ .text.libgcc   0x000007ae        0x0 c:/winavr-20080430/bin/../lib/gcc/avr/4.3.0/avr5\libgcc.a(_copy_data.o)
+ .text.libgcc   0x000007ae        0x0 c:/winavr-20080430/bin/../lib/gcc/avr/4.3.0/avr5\libgcc.a(_clear_bss.o)
+ .text.libgcc   0x000007ae       0x28 c:/winavr-20080430/bin/../lib/gcc/avr/4.3.0/avr5\libgcc.a(_udivmodhi4.o)
+                0x000007ae                __udivmodhi4
+                0x000007d6                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x000007b6        0x0 c:/winavr-20080430/bin/../lib/gcc/avr/4.3.0/avr5\libgcc.a(_exit.o)
-                0x000007b6                exit
-                0x000007b6                _exit
+ .fini9         0x000007d6        0x0 c:/winavr-20080430/bin/../lib/gcc/avr/4.3.0/avr5\libgcc.a(_exit.o)
+                0x000007d6                exit
+                0x000007d6                _exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -276,70 +274,68 @@ LOAD c:/winavr-20080430/bin/../lib/gcc/avr/4.3.0/avr5\libgcc.a
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x000007b6        0x4 c:/winavr-20080430/bin/../lib/gcc/avr/4.3.0/avr5\libgcc.a(_exit.o)
+ .fini0         0x000007d6        0x4 c:/winavr-20080430/bin/../lib/gcc/avr/4.3.0/avr5\libgcc.a(_exit.o)
  *(.fini0)
-                0x000007ba                _etext = .
+                0x000007da                _etext = .
 
-.data           0x00800060        0x2 load address 0x000007ba
+.data           0x00800060       0x1a load address 0x000007da
                 0x00800060                PROVIDE (__data_start, .)
  *(.data)
  .data          0x00800060        0x0 c:/winavr-20080430/bin/../lib/gcc/avr/4.3.0/../../../../avr/lib/avr5/crtm16.o
- .data          0x00800060        0x0 avrhidmouse.o
- .data          0x00800060        0x0 usbdrvasm.o
- .data          0x00800060        0x0 lcd.o
- .data          0x00800060        0x0 oddebug.o
- .data          0x00800060        0x2 usbdrv.o
-                0x00800060                usbTxLen
- .data          0x00800062        0x0 c:/winavr-20080430/bin/../lib/gcc/avr/4.3.0/avr5\libgcc.a(_divmodhi4.o)
- .data          0x00800062        0x0 c:/winavr-20080430/bin/../lib/gcc/avr/4.3.0/avr5\libgcc.a(_exit.o)
- .data          0x00800062        0x0 c:/winavr-20080430/bin/../lib/gcc/avr/4.3.0/avr5\libgcc.a(_copy_data.o)
- .data          0x00800062        0x0 c:/winavr-20080430/bin/../lib/gcc/avr/4.3.0/avr5\libgcc.a(_clear_bss.o)
- .data          0x00800062        0x0 c:/winavr-20080430/bin/../lib/gcc/avr/4.3.0/avr5\libgcc.a(_udivmodhi4.o)
+ .data          0x00800060       0x18 avrhidmouse.o
+ .data          0x00800078        0x0 usbdrvasm.o
+ .data          0x00800078        0x0 oddebug.o
+ .data          0x00800078        0x2 usbdrv.o
+                0x00800078                usbTxLen
+ .data          0x0080007a        0x0 c:/winavr-20080430/bin/../lib/gcc/avr/4.3.0/avr5\libgcc.a(_divmodhi4.o)
+ .data          0x0080007a        0x0 c:/winavr-20080430/bin/../lib/gcc/avr/4.3.0/avr5\libgcc.a(_exit.o)
+ .data          0x0080007a        0x0 c:/winavr-20080430/bin/../lib/gcc/avr/4.3.0/avr5\libgcc.a(_copy_data.o)
+ .data          0x0080007a        0x0 c:/winavr-20080430/bin/../lib/gcc/avr/4.3.0/avr5\libgcc.a(_clear_bss.o)
+ .data          0x0080007a        0x0 c:/winavr-20080430/bin/../lib/gcc/avr/4.3.0/avr5\libgcc.a(_udivmodhi4.o)
  *(.data*)
  *(.rodata)
  *(.rodata*)
  *(.gnu.linkonce.d*)
-                0x00800062                . = ALIGN (0x2)
-                0x00800062                _edata = .
-                0x00800062                PROVIDE (__data_end, .)
+                0x0080007a                . = ALIGN (0x2)
+                0x0080007a                _edata = .
+                0x0080007a                PROVIDE (__data_end, .)
 
-.bss            0x00800062       0x2b load address 0x000007bc
-                0x00800062                PROVIDE (__bss_start, .)
+.bss            0x0080007a       0x2b load address 0x000007f4
+                0x0080007a                PROVIDE (__bss_start, .)
  *(.bss)
- .bss           0x00800062        0x0 c:/winavr-20080430/bin/../lib/gcc/avr/4.3.0/../../../../avr/lib/avr5/crtm16.o
- .bss           0x00800062        0x0 avrhidmouse.o
- .bss           0x00800062        0x0 usbdrvasm.o
- .bss           0x00800062        0x0 lcd.o
- .bss           0x00800062        0x0 oddebug.o
- .bss           0x00800062        0x1 usbdrv.o
- .bss           0x00800063        0x0 c:/winavr-20080430/bin/../lib/gcc/avr/4.3.0/avr5\libgcc.a(_divmodhi4.o)
- .bss           0x00800063        0x0 c:/winavr-20080430/bin/../lib/gcc/avr/4.3.0/avr5\libgcc.a(_exit.o)
- .bss           0x00800063        0x0 c:/winavr-20080430/bin/../lib/gcc/avr/4.3.0/avr5\libgcc.a(_copy_data.o)
- .bss           0x00800063        0x0 c:/winavr-20080430/bin/../lib/gcc/avr/4.3.0/avr5\libgcc.a(_clear_bss.o)
- .bss           0x00800063        0x0 c:/winavr-20080430/bin/../lib/gcc/avr/4.3.0/avr5\libgcc.a(_udivmodhi4.o)
+ .bss           0x0080007a        0x0 c:/winavr-20080430/bin/../lib/gcc/avr/4.3.0/../../../../avr/lib/avr5/crtm16.o
+ .bss           0x0080007a        0x0 avrhidmouse.o
+ .bss           0x0080007a        0x0 usbdrvasm.o
+ .bss           0x0080007a        0x0 oddebug.o
+ .bss           0x0080007a        0x1 usbdrv.o
+ .bss           0x0080007b        0x0 c:/winavr-20080430/bin/../lib/gcc/avr/4.3.0/avr5\libgcc.a(_divmodhi4.o)
+ .bss           0x0080007b        0x0 c:/winavr-20080430/bin/../lib/gcc/avr/4.3.0/avr5\libgcc.a(_exit.o)
+ .bss           0x0080007b        0x0 c:/winavr-20080430/bin/../lib/gcc/avr/4.3.0/avr5\libgcc.a(_copy_data.o)
+ .bss           0x0080007b        0x0 c:/winavr-20080430/bin/../lib/gcc/avr/4.3.0/avr5\libgcc.a(_clear_bss.o)
+ .bss           0x0080007b        0x0 c:/winavr-20080430/bin/../lib/gcc/avr/4.3.0/avr5\libgcc.a(_udivmodhi4.o)
  *(.bss*)
  *(COMMON)
- COMMON         0x00800063       0x2a usbdrv.o
-                0x00800063                usbTxBuf
-                0x0080006e                usbDeviceAddr
-                0x0080006f                usbRxToken
-                0x00800070                usbInputBufOffset
-                0x00800071                usbMsgPtr
-                0x00800073                usbRxLen
-                0x00800074                usbNewDeviceAddr
-                0x00800075                usbCurrentTok
-                0x00800076                usbConfiguration
-                0x00800077                usbRxBuf
-                0x0080008d                PROVIDE (__bss_end, .)
-                0x000007ba                __data_load_start = LOADADDR (.data)
-                0x000007bc                __data_load_end = (__data_load_start + SIZEOF (.data))
+ COMMON         0x0080007b       0x2a usbdrv.o
+                0x0080007b                usbTxBuf
+                0x00800086                usbDeviceAddr
+                0x00800087                usbRxToken
+                0x00800088                usbInputBufOffset
+                0x00800089                usbMsgPtr
+                0x0080008b                usbRxLen
+                0x0080008c                usbNewDeviceAddr
+                0x0080008d                usbCurrentTok
+                0x0080008e                usbConfiguration
+                0x0080008f                usbRxBuf
+                0x008000a5                PROVIDE (__bss_end, .)
+                0x000007da                __data_load_start = LOADADDR (.data)
+                0x000007f4                __data_load_end = (__data_load_start + SIZEOF (.data))
 
-.noinit         0x0080008d        0x0
-                0x0080008d                PROVIDE (__noinit_start, .)
+.noinit         0x008000a5        0x0
+                0x008000a5                PROVIDE (__noinit_start, .)
  *(.noinit*)
-                0x0080008d                PROVIDE (__noinit_end, .)
-                0x0080008d                _end = .
-                0x0080008d                PROVIDE (__heap_start, .)
+                0x008000a5                PROVIDE (__noinit_end, .)
+                0x008000a5                _end = .
+                0x008000a5                PROVIDE (__heap_start, .)
 
 .eeprom         0x00810000        0x0
  *(.eeprom*)
@@ -390,68 +386,57 @@ LOAD c:/winavr-20080430/bin/../lib/gcc/avr/4.3.0/avr5\libgcc.a
 .debug_sfnames
  *(.debug_sfnames)
 
-.debug_aranges  0x00000000       0x60
+.debug_aranges  0x00000000       0x40
  *(.debug_aranges)
  .debug_aranges
                 0x00000000       0x20 avrhidmouse.o
  .debug_aranges
-                0x00000020       0x20 lcd.o
- .debug_aranges
-                0x00000040       0x20 usbdrv.o
+                0x00000020       0x20 usbdrv.o
 
 .debug_pubnames
-                0x00000000      0x206
+                0x00000000      0x1f4
  *(.debug_pubnames)
  .debug_pubnames
-                0x00000000       0x30 avrhidmouse.o
+                0x00000000       0x89 avrhidmouse.o
  .debug_pubnames
-                0x00000030       0x6b lcd.o
- .debug_pubnames
-                0x0000009b      0x16b usbdrv.o
+                0x00000089      0x16b usbdrv.o
 
-.debug_info     0x00000000      0xf06
+.debug_info     0x00000000      0xf03
  *(.debug_info)
- .debug_info    0x00000000      0x13e avrhidmouse.o
- .debug_info    0x0000013e      0x61c lcd.o
- .debug_info    0x0000075a       0x61 oddebug.o
- .debug_info    0x000007bb      0x74b usbdrv.o
+ .debug_info    0x00000000      0x757 avrhidmouse.o
+ .debug_info    0x00000757       0x61 oddebug.o
+ .debug_info    0x000007b8      0x74b usbdrv.o
  *(.gnu.linkonce.wi.*)
 
-.debug_abbrev   0x00000000      0x4e9
+.debug_abbrev   0x00000000      0x467
  *(.debug_abbrev)
- .debug_abbrev  0x00000000       0xe2 avrhidmouse.o
- .debug_abbrev  0x000000e2      0x1ac lcd.o
- .debug_abbrev  0x0000028e       0x33 oddebug.o
- .debug_abbrev  0x000002c1      0x228 usbdrv.o
+ .debug_abbrev  0x00000000      0x20c avrhidmouse.o
+ .debug_abbrev  0x0000020c       0x33 oddebug.o
+ .debug_abbrev  0x0000023f      0x228 usbdrv.o
 
-.debug_line     0x00000000      0x85f
+.debug_line     0x00000000      0x7bb
  *(.debug_line)
- .debug_line    0x00000000      0x164 avrhidmouse.o
- .debug_line    0x00000164      0x3e0 lcd.o
- .debug_line    0x00000544       0x41 oddebug.o
- .debug_line    0x00000585      0x2da usbdrv.o
+ .debug_line    0x00000000      0x4a0 avrhidmouse.o
+ .debug_line    0x000004a0       0x41 oddebug.o
+ .debug_line    0x000004e1      0x2da usbdrv.o
 
-.debug_frame    0x00000000       0xd0
+.debug_frame    0x00000000       0xc0
  *(.debug_frame)
- .debug_frame   0x00000000       0x30 avrhidmouse.o
- .debug_frame   0x00000030       0x70 lcd.o
- .debug_frame   0x000000a0       0x30 usbdrv.o
+ .debug_frame   0x00000000       0x90 avrhidmouse.o
+ .debug_frame   0x00000090       0x30 usbdrv.o
 
-.debug_str      0x00000000      0x42a
+.debug_str      0x00000000      0x421
  *(.debug_str)
- .debug_str     0x00000000       0xcc avrhidmouse.o
-                                0x105 (size before relaxing)
- .debug_str     0x000000cc       0x9a lcd.o
-                                0x178 (size before relaxing)
- .debug_str     0x00000166        0xd oddebug.o
+ .debug_str     0x00000000      0x1b6 avrhidmouse.o
+                                0x1fd (size before relaxing)
+ .debug_str     0x000001b6        0xd oddebug.o
                                  0xa3 (size before relaxing)
- .debug_str     0x00000173      0x2b7 usbdrv.o
+ .debug_str     0x000001c3      0x25e usbdrv.o
                                 0x371 (size before relaxing)
 
 .debug_loc      0x00000000      0x5a6
  *(.debug_loc)
- .debug_loc     0x00000000       0x43 avrhidmouse.o
- .debug_loc     0x00000043      0x313 lcd.o
+ .debug_loc     0x00000000      0x356 avrhidmouse.o
  .debug_loc     0x00000356      0x250 usbdrv.o
 
 .debug_macinfo
@@ -460,6 +445,5 @@ OUTPUT(avrhidmouse.elf elf32-avr)
 LOAD linker stubs
 
 .debug_ranges   0x00000000      0x130
- .debug_ranges  0x00000000       0x48 avrhidmouse.o
- .debug_ranges  0x00000048       0x90 lcd.o
+ .debug_ranges  0x00000000       0xd8 avrhidmouse.o
  .debug_ranges  0x000000d8       0x58 usbdrv.o
