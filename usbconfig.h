@@ -1,3 +1,12 @@
+/* Name: usbconfig.h
+ * Project: V-USB, virtual USB port for Atmel's(r) AVR(r) microcontrollers
+ * Author: Christian Starkjohann
+ * Creation Date: 2005-04-01
+ * Tabsize: 4
+ * Copyright: (c) 2005 by OBJECTIVE DEVELOPMENT Software GmbH
+ * License: GNU GPL v2 (see License.txt), GNU GPL v3 or proprietary (CommercialLicense.txt)
+ * This Revision: $Id$
+ */
 
 #ifndef __usbconfig_h_included__
 #define __usbconfig_h_included__
@@ -10,9 +19,6 @@ also hardware interrupt 0 on many devices) and USB D- to Port D bit 4. You may
 wire the lines to any other port, as long as D+ is also wired to INT0 (or any
 other hardware interrupt, as long as it is the highest level interrupt, see
 section at the end of this file).
-+ To create your own usbconfig.h file, copy this file to your project's
-+ firmware source directory) and rename it to "usbconfig.h".
-+ Then edit it accordingly.
 */
 
 /* ---------------------------- Hardware Config ---------------------------- */
@@ -34,7 +40,7 @@ section at the end of this file).
  * interrupt, the USB interrupt will also be triggered at Start-Of-Frame
  * markers every millisecond.]
  */
-#define USB_CFG_CLOCK_KHZ       12000
+#define USB_CFG_CLOCK_KHZ       (F_CPU/1000)
 /* Clock rate of the AVR in kHz. Legal values are 12000, 12800, 15000, 16000,
  * 16500, 18000 and 20000. The 12.8 MHz and 16.5 MHz versions of the code
  * require no crystal, they tolerate +/- 1% deviation from the nominal
@@ -101,7 +107,7 @@ section at the end of this file).
  * (e.g. HID), but never want to send any data. This option saves a couple
  * of bytes in flash memory and the transmit buffers in RAM.
  */
-#define USB_CFG_INTR_POLL_INTERVAL      10
+#define USB_CFG_INTR_POLL_INTERVAL      100
 /* If you compile a version with endpoint 1 (interrupt-in), this is the poll
  * interval. The value is in milliseconds and must not be less than 10 ms for
  * low speed devices.
@@ -110,7 +116,7 @@ section at the end of this file).
 /* Define this to 1 if the device has its own power supply. Set it to 0 if the
  * device is powered from the USB bus.
  */
-#define USB_CFG_MAX_BUS_POWER           100
+#define USB_CFG_MAX_BUS_POWER           20
 /* Set this variable to the maximum USB bus power consumption of your device.
  * The value is in milliamperes. [It will be divided by two since USB
  * communicates power requirements in units of 2 mA.]
@@ -219,7 +225,7 @@ section at the end of this file).
  * with libusb: 0x16c0/0x5dc.  Use this VID/PID pair ONLY if you understand
  * the implications!
  */
-#define  USB_CFG_DEVICE_ID       0xdc, 0x05 /* = 0x05dc = 1500 */
+#define  USB_CFG_DEVICE_ID       0xe8, 0x03 /* VOTI's lab use PID */
 /* This is the ID of the product, low byte first. It is interpreted in the
  * scope of the vendor ID. If you have registered your own VID with usb.org
  * or if you have licensed a PID from somebody else, define it here. Otherwise
@@ -243,8 +249,8 @@ section at the end of this file).
  * obdev's free shared VID/PID pair. See the file USB-IDs-for-free.txt for
  * details.
  */
-#define USB_CFG_DEVICE_NAME     'T', 'e', 'm', 'p', 'l', 'a', 't', 'e'
-#define USB_CFG_DEVICE_NAME_LEN 8
+#define USB_CFG_DEVICE_NAME     'M', 'o', 'u', 's', 'e'
+#define USB_CFG_DEVICE_NAME_LEN 5
 /* Same as above for the device name. If you don't want a device name, undefine
  * the macros. See the file USB-IDs-for-free.txt before you assign a name if
  * you use a shared VID/PID.
@@ -258,12 +264,12 @@ section at the end of this file).
  * to fine tune control over USB descriptors such as the string descriptor
  * for the serial number.
  */
-#define USB_CFG_DEVICE_CLASS        0xff    /* set to 0 if deferred to interface */
+#define USB_CFG_DEVICE_CLASS        0
 #define USB_CFG_DEVICE_SUBCLASS     0
 /* See USB specification if you want to conform to an existing device class.
  * Class 0xff is "vendor specific".
  */
-#define USB_CFG_INTERFACE_CLASS     0   /* define class here if not at device level */
+#define USB_CFG_INTERFACE_CLASS     3
 #define USB_CFG_INTERFACE_SUBCLASS  0
 #define USB_CFG_INTERFACE_PROTOCOL  0
 /* See USB specification if you want to conform to an existing device class or
@@ -271,7 +277,7 @@ section at the end of this file).
  * HID class is 3, no subclass and protocol required (but may be useful!)
  * CDC class is 2, use subclass 2 and protocol 1 for ACM
  */
-/* #define USB_CFG_HID_REPORT_DESCRIPTOR_LENGTH    42 */
+#define USB_CFG_HID_REPORT_DESCRIPTOR_LENGTH    52
 /* Define this to the length of the HID report descriptor, if you implement
  * an HID device. Otherwise don't define it or define it to 0.
  * If you use this define, you must add a PROGMEM character array named
