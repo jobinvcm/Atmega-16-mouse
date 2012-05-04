@@ -13,7 +13,6 @@ avrhidmouse.o: ../avrhidmouse.c \
   c:/winavr-20080430/lib/gcc/../../avr/include/avr/interrupt.h \
   c:/winavr-20080430/lib/gcc/../../avr/include/util/delay.h \
   c:/winavr-20080430/lib/gcc/../../avr/include/util/delay_basic.h \
-  ../lcd.c ../lcd.h ../myutils.h \
   c:/winavr-20080430/lib/gcc/../../avr/include/avr/pgmspace.h \
   c:\winavr-20080430\bin\../lib/gcc/avr/4.3.0/include/stddef.h \
   ../usbdrv.h ../usbconfig.h ../usbportability.h ../oddebug.h
@@ -45,12 +44,6 @@ c:/winavr-20080430/lib/gcc/../../avr/include/avr/interrupt.h:
 c:/winavr-20080430/lib/gcc/../../avr/include/util/delay.h:
 
 c:/winavr-20080430/lib/gcc/../../avr/include/util/delay_basic.h:
-
-../lcd.c:
-
-../lcd.h:
-
-../myutils.h:
 
 c:/winavr-20080430/lib/gcc/../../avr/include/avr/pgmspace.h:
 

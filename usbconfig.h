@@ -1,4 +1,12 @@
-
+/* Name: usbconfig.h
+ * Project: V-USB, virtual USB port for Atmel's(r) AVR(r) microcontrollers
+ * Author: Christian Starkjohann
+ * Creation Date: 2005-04-01
+ * Tabsize: 4
+ * Copyright: (c) 2005 by OBJECTIVE DEVELOPMENT Software GmbH
+ * License: GNU GPL v2 (see License.txt), GNU GPL v3 or proprietary (CommercialLicense.txt)
+ * This Revision: $Id$
+ */
 
 #ifndef __usbconfig_h_included__
 #define __usbconfig_h_included__
@@ -32,7 +40,7 @@ section at the end of this file).
  * interrupt, the USB interrupt will also be triggered at Start-Of-Frame
  * markers every millisecond.]
  */
-#define USB_CFG_CLOCK_KHZ       (12000000/1000)
+#define USB_CFG_CLOCK_KHZ       (12000)
 /* Clock rate of the AVR in kHz. Legal values are 12000, 12800, 15000, 16000,
  * 16500, 18000 and 20000. The 12.8 MHz and 16.5 MHz versions of the code
  * require no crystal, they tolerate +/- 1% deviation from the nominal
@@ -208,7 +216,7 @@ section at the end of this file).
 
 /* -------------------------- Device Description --------------------------- */
 
-#define  USB_CFG_VENDOR_ID       0xe8, 0x03 /* = 0x16c0 = 5824 = voti.nl */
+#define  USB_CFG_VENDOR_ID       0xc0, 0x16 /* = 0x16c0 = 5824 = voti.nl */
 /* USB vendor ID for the device, low byte first. If you have registered your
  * own Vendor ID, define it here. Otherwise you may use one of obdev's free
  * shared VID/PID pairs. Be sure to read USB-IDs-for-free.txt for rules!
@@ -231,8 +239,8 @@ section at the end of this file).
 #define USB_CFG_DEVICE_VERSION  0x00, 0x01
 /* Version number of the device: Minor number first, then major number.
  */
-#define USB_CFG_VENDOR_NAME     'M', 'o', 'u', 's', 'e'
-#define USB_CFG_VENDOR_NAME_LEN 5
+#define USB_CFG_VENDOR_NAME     'o', 'b', 'd', 'e', 'v', '.', 'a', 't'
+#define USB_CFG_VENDOR_NAME_LEN 8
 /* These two values define the vendor name returned by the USB device. The name
  * must be given as a list of characters under single quotes. The characters
  * are interpreted as Unicode (UTF-16) entities.
@@ -363,3 +371,4 @@ section at the end of this file).
 /* #define USB_INTR_VECTOR         INT0_vect */
 
 #endif /* __usbconfig_h_included__ */
+
