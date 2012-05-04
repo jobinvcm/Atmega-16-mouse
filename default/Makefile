@@ -35,7 +35,7 @@ HEX_EEPROM_FLAGS += --change-section-lma .eeprom=0 --no-change-warnings
 
 
 ## Objects that must be built in order to link
-OBJECTS = avrhidmouse.o usbdrvasm.o oddebug.o usbdrv.o 
+OBJECTS = avrhidmouse.o 
 
 ## Objects explicitly added by the user
 LINKONLYOBJECTS = 
@@ -44,16 +44,7 @@ LINKONLYOBJECTS =
 all: $(TARGET) avrhidmouse.hex avrhidmouse.eep avrhidmouse.lss size
 
 ## Compile
-usbdrvasm.o: ../usbdrvasm.S
-	$(CC) $(INCLUDES) $(ASMFLAGS) -c  $<
-
 avrhidmouse.o: ../avrhidmouse.c
-	$(CC) $(INCLUDES) $(CFLAGS) -c  $<
-
-oddebug.o: ../oddebug.c
-	$(CC) $(INCLUDES) $(CFLAGS) -c  $<
-
-usbdrv.o: ../usbdrv.c
 	$(CC) $(INCLUDES) $(CFLAGS) -c  $<
 
 ##Link
