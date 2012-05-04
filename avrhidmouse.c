@@ -1,12 +1,4 @@
-/* Name: main.c
- * Project: hid-mouse, a very simple HID example
- * Author: Christian Starkjohann
- * Creation Date: 2008-04-07
- * Tabsize: 4
- * Copyright: (c) 2008 by OBJECTIVE DEVELOPMENT Software GmbH
- * License: GNU GPL v2 (see License.txt), GNU GPL v3 or proprietary (CommercialLicense.txt)
- * This Revision: $Id$
- */
+
 
 /*
 This example should run on most AVRs with only little changes. No special
@@ -26,7 +18,7 @@ publish any hardware using these IDs! This is for demonstration only!
 #include <avr/pgmspace.h>   /* required by usbdrv.h */
 #include "usbdrv.h"
 #include "oddebug.h"        /* This is also an example for using debug macros */
-
+#define F_CPU 12000000UL
 /* ------------------------------------------------------------------------- */
 /* ----------------------------- USB interface ----------------------------- */
 /* ------------------------------------------------------------------------- */

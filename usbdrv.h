@@ -1,3 +1,12 @@
+/* Name: usbdrv.h
+ * Project: V-USB, virtual USB port for Atmel's(r) AVR(r) microcontrollers
+ * Author: Christian Starkjohann
+ * Creation Date: 2004-12-29
+ * Tabsize: 4
+ * Copyright: (c) 2005 by OBJECTIVE DEVELOPMENT Software GmbH
+ * License: GNU GPL v2 (see License.txt), GNU GPL v3 or proprietary (CommercialLicense.txt)
+ * This Revision: $Id$
+ */
 
 #ifndef __usbdrv_h_included__
 #define __usbdrv_h_included__
