@@ -1,11 +1,11 @@
 ###############################################################################
-# Makefile for the project avrhidmouse
+# Makefile for the project main
 ###############################################################################
 
 ## General Flags
-PROJECT = avrhidmouse
+PROJECT = main
 MCU = atmega16
-TARGET = avrhidmouse.elf
+TARGET = main.elf
 CC = avr-gcc
 
 ## Options common to compile, link and assembly rules
@@ -23,7 +23,7 @@ ASMFLAGS += -x assembler-with-cpp -Wa,-gdwarf2
 
 ## Linker flags
 LDFLAGS = $(COMMON)
-LDFLAGS +=  -Wl,-Map=avrhidmouse.map
+LDFLAGS +=  -Wl,-Map=main.map
 
 
 ## Intel Hex file production flags
@@ -35,19 +35,28 @@ HEX_EEPROM_FLAGS += --change-section-lma .eeprom=0 --no-change-warnings
 
 
 ## Objects that must be built in order to link
-OBJECTS = avrhidmouse.o usbdrvasm.o 
+OBJECTS = main.o usbdrvasm.o lcd.o oddebug.o usbdrv.o 
 
 ## Objects explicitly added by the user
 LINKONLYOBJECTS = 
 
 ## Build
-all: $(TARGET) avrhidmouse.hex avrhidmouse.eep avrhidmouse.lss size
+all: $(TARGET) main.hex main.eep main.lss size
 
 ## Compile
 usbdrvasm.o: ../usbdrvasm.S
 	$(CC) $(INCLUDES) $(ASMFLAGS) -c  $<
 
-avrhidmouse.o: ../avrhidmouse.c
+main.o: ../main.c
+	$(CC) $(INCLUDES) $(CFLAGS) -c  $<
+
+lcd.o: ../lcd.c
+	$(CC) $(INCLUDES) $(CFLAGS) -c  $<
+
+oddebug.o: ../oddebug.c
+	$(CC) $(INCLUDES) $(CFLAGS) -c  $<
+
+usbdrv.o: ../usbdrv.c
 	$(CC) $(INCLUDES) $(CFLAGS) -c  $<
 
 ##Link
@@ -70,7 +79,7 @@ size: ${TARGET}
 ## Clean target
 .PHONY: clean
 clean:
-	-rm -rf $(OBJECTS) avrhidmouse.elf dep/* avrhidmouse.hex avrhidmouse.eep avrhidmouse.lss avrhidmouse.map
+	-rm -rf $(OBJECTS) main.elf dep/* main.hex main.eep main.lss main.map
 
 
 ## Other dependencies
