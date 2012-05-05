@@ -18,7 +18,7 @@ publish any hardware using these IDs! This is for demonstration only!
 #include <avr/pgmspace.h>   /* required by usbdrv.h */
 #include "usbdrv.h"
 #include "oddebug.h"        /* This is also an example for using debug macros */
-#define F_CPU 12000000UL
+#define F_CPU 16000000UL
 /* ------------------------------------------------------------------------- */
 /* ----------------------------- USB interface ----------------------------- */
 /* ------------------------------------------------------------------------- */
